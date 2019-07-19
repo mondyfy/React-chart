@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Line } from "react-chartjs-2";
+import { Line, Bar } from "react-chartjs-2";
+//import "chartjs-plugin-lineheight-annotation";
 
 export default class App extends Component {
   constructor(props) {
@@ -7,18 +8,26 @@ export default class App extends Component {
     this.state = {
       type: "graph",
       data: {
-        labels: ["1", "2", "3", "4", "5"],
+        labels: [
+          "Janaury",
+          "Freburery",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July"
+        ],
         datasets: [
           {
             label: "Video Mades",
             backgroundColor: "rgba(255,0,255,0.75)",
-            data: [4, 5, 1, 10, 32, 2, 12]
-          },
+            data: [44, 54, 61, 60, 32, 29]
+          } /* ,
           {
             label: "Subscriptions",
             backgroundColor: "rgba(0,255,0,0.75)",
             data: [14, 15, 21, 0, 12, 4, 2]
-          }
+          } */
         ]
       }
     };
@@ -33,7 +42,7 @@ export default class App extends Component {
     return gradient;
   };
 
-  getChartData = canvas => {
+  /*  getChartData = canvas => {
     const data = this.state.data;
 
     if (data.datasets) {
@@ -45,13 +54,28 @@ export default class App extends Component {
       });
     }
     return data;
-  };
+  }; */
 
   render() {
     return (
       <div style={{ position: "relative", width: 800, height: 750 }}>
         <h3> Chart Samples</h3>
-        <Line options={{ responsive: true }} data={this.getChartData} />
+        <h4>Line</h4>
+        <Line
+        /* options={{
+            responsive: true,
+            lineHeightAnnotation: {
+              always: false,
+              hover: true,
+              color: "white",
+              noDash: true
+            }
+          }}
+          data={this.getChartData} */
+        />
+
+        <h4>Bar</h4>
+        <Bar data={this.state.data} />
       </div>
     );
   }
